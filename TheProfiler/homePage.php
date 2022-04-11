@@ -1,7 +1,5 @@
 <?php
     session_start();
-
-    include "./database/database/table.php";
 ?>
 
 <!DOCTYPE html>

@@ -50,7 +50,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="fnameInput">Full Name</label>
-                                    <input type="text" name="fullName" id="fnameInput" placeholder="Enter full name" >
+                                    <input type="text" name="fullName" id="fnameInput" class="form-control" placeholder="Enter full name" >
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="unameInput">Username</label>
-                                    <input type="text" name="username" id="unameInput" placeholder="Enter username" >
+                                    <input type="text" name="username" id="unameInput" class="form-control" placeholder="Enter username" >
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="emailInput">Email</label>
-                                    <input type="text" name="email" id="emailInput" placeholder="Enter email" >
+                                    <input type="text" name="email" id="emailInput" class="form-control" placeholder="Enter email" >
                                 </div>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="passInput">Password</label>
-                                    <input type="password" name="password" id="passInput" placeholder="Enter password" >
+                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" >
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="cpassInput">Confirm Password</label>
-                                    <input type="password" name="cpassword" id="cpassInput" placeholder="Re-enter password" >
+                                    <input type="password" name="cpassword" id="cpassInput" class="form-control" placeholder="Re-enter password" >
                                 </div>
                             </div>
                         </div>

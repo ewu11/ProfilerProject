@@ -2,16 +2,22 @@
     // start session
     session_start();
 
-    //if user is logged in, redirect to homepage when index is opened
-    //else, ask him to sign in
-    // if(isset($_POST["signin"]) && $_SESSION["loggedIn"] === true) {
-    $_SESSION["loggedIn"] = false;
+    //check for database and tables first, since this is first main page
+    //order: index.php calls table.php calls database.php
+    // include_once "/xampp/htdocs/testProfile/database/database/table.php";
 
-    if($_SESSION["loggedIn"] === true) {
+    // if(isset($_POST["signin"]) && $_SESSION["loggedIn"] === true) {
+
+    //if user was is logged in, redirect to homepage
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
         header("Location: homePage.php");
         exit; //not sure what this does, but can test by commenting out
     }
+    else { //if first time open
+        $_SESSION["loggedIn"] = false; //initialize the session variable
+    }
 ?>
+
 <!DOCTYPE html>
 <html>
     <header>
@@ -64,7 +70,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="unameInput">Username</label>
-                                    <input type="text" name="username" id="unameInput" placeholder="Enter username" >
+                                    <input type="text" name="username" id="unameInput" class="form-control" placeholder="Enter username" >
                                     <br>
                                 </div>
                             </div>
@@ -73,7 +79,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="passInput">Password</label>
-                                    <input type="password" name="password" id="passInput" placeholder="Enter password" >
+                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" >
                                 </div>
                             </div>
                         </div>

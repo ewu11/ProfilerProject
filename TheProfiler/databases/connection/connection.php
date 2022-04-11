@@ -26,7 +26,7 @@
 
     //select the database
     $checkDB = $conn->select_db($dbName); //-> to check whether database exists
-    $selectDB = "USE " .$dbName;
+    $useDB = "USE " .$dbName;
 
 
     //drop the database
@@ -64,7 +64,7 @@
 
     //solution for: "no database selected"
     //after creating database, tell mysql to select which database
-    if($conn->query($selectDB)) {
+    if($conn->query($useDB)) {
         echo "Database named <u>" .$dbName. "</u> selected!<br>";
     }
     else {
