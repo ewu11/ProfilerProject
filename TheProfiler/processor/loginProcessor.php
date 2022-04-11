@@ -12,6 +12,10 @@
     //----variables----
     $username = $_POST["username"];
     $password = $_POST["password"];
+
+    //to be used by "manageHomePage.php"
+    $_SESSION["s_username"] = $username;
+    $_SESSION["s_password"] = $password;
     //----variables----
 
     //----queries----

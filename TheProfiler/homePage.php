@@ -50,7 +50,10 @@
         <!-- insert here -->
         <div id="mainContainer">
             <!-- insert here... -->
-            <center><p>Hello World!</p></center>
+            <!-- <center><p>Hello World!</p></center> -->
+            <center>
+                <?php require_once "./processor/manageHomePage.php"; ?>
+            </center>
         </div>
 
         <!-- bootstrap javascript bundle -->
@@ -66,8 +69,3 @@
         </div>
     </footer>
 </html>
-
-<?php
-    // take username
-    $query = "SELECT username";
-?>
