@@ -1,0 +1,79 @@
+html, body {
+    /* to make container's height to full screen height */
+    height: 100vh; 
+    /* to remove scroll */
+    overflow: hidden;
+}
+
+#headerContainer {
+    width: 100%;
+    margin: auto;
+    border: 1px none black;
+    background-color: rgb(224, 215, 202);
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 5%;
+    /* margin-bottom: 3%; */
+}
+
+#mainContainer {
+    width: 50%;
+    left: 0;
+    top: 0;
+    margin: auto;
+    border: 1px none black;
+    background-color: rgb(224, 215, 202);
+    padding: 1%;
+    height: 100%;
+}
+
+#mainContainer #firstBody{
+    width: 65%;
+    margin: auto;
+    border: 1px none black;
+    background-color: rgb(222, 184, 135);
+    padding: 3%;
+    height: fit-content;
+}
+
+#footerContainer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    /* right = 0 -> helps to center the footer */
+    right: 0px;
+    margin: auto;
+    width: 100%;
+    background-color: rgb(224, 215, 202);
+    text-align: center;
+    padding: 1%;
+}
+
+#horiLine1 {
+    width: 70%;
+    margin-bottom: 5%;
+}
+
+.row.bottom-gap {
+    margin-bottom: 3%;
+}
+
+#headerContainer #firstHeader .navbar img {
+    margin-right: 10%;
+}
+
+input {
+    text-align: center;
+    display: block;
+}
+
+#boxGroup {
+    /* background-color:  #a49693; */
+    border: 1px solid blanchedalmond;
+    padding: 3%;
+}
+
+#navItems {
+    /* border: 1px solid black; */
+    margin-right: 5%;
+}
