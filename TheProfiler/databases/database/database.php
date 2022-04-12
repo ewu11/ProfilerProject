@@ -3,7 +3,7 @@
     //TO CREATE DATABASE
 
     //import to access class
-    if($_SESSION["loggedIn"] === true) { //if login button clicked
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if login button clicked
         require "./databases/connection/connectionNew.php";
     }
     else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"

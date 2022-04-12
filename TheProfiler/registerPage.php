@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <header>
@@ -104,6 +108,18 @@
                 </center>
             </div>
         </div>
+        <?php
+            //---display msg output---
+            if(isset($_SESSION["msg"])) {
+                echo 
+                "<script>
+                    alert('".$_SESSION["msg"]."');
+                </script>
+                ";
+            }
+            unset($_SESSION["msg"]); //->this way, no output when page loaded
+            //---display msg output---
+        ?>
     </body>
 
     <footer>

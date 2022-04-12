@@ -34,14 +34,17 @@
         //     echo "Username: " . $row["username"]. " - Password: " . $row["password"]. "<br>";
         // }
         $_SESSION["loggedIn"] = true;
+        $_SESSION["msg"] = "Successfully logged in!";
         header("Location: ../homePage.php");
     }
     else {
         if($_SESSION["onDebug"] === true) {
             // echo "Error: " .mysqli_error($conn). "<br>";
             echo "Invalid account details!<br>";
-            echo "<script> window.alert('Invalid account details!'); </script>";
+            // echo "<script> window.alert('Invalid account details!'); </script>";
         }
+        $_SESSION["msg"] = "Invalid account details!";
+        header("Location: ../index.php");
     }
     //----operations----
 
