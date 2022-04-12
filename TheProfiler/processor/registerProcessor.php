@@ -1,15 +1,9 @@
 <?php
-    //---make a connection to database---
+    //TO REGISTER USERS
 
-    //way 1
-    include_once "../database/database/table.php";
-
-    //way 2
-    //include_once("/xampp/htdocs/testProfile/database/connection/connection.php");
-    //---make a connection to database---
-
-    //---variables---
-    // $accTblName = "account";
+    //-----variables-----
+    require_once "../databases/database/database.php";
+    // require("/xampp/htdocs/testProfile/databases/database/database.php");
 
     $fullName = $_POST["fullName"];
     $username = $_POST["username"];
@@ -17,50 +11,52 @@
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
 
-    // $createTable = "CREATE TABLE " .$accTblName. "(
-    //     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    //     fullName VARCHAR(50) NOT NULL,
-    //     userName VARCHAR(50) NOT NULL UNIQUE,
-    //     email VARCHAR(50) NOT NULL UNIQUE,
-    //     password VARCHAR(50) NOT NULL,
-    //     cPassword VARCHAR(50) NOT NUll
-    // );";
+    // $accTblName = "account";
+    //-----variables-----
 
-    // $sql = "INSERT INTO employee (first_name,last_name,city_name,email) VALUES ('$first_name','$last_name','$city_name','$email')";
+    //-----queries-----   
+    $createTable = "CREATE TABLE " .$accTblName. "(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        fullName VARCHAR(50) NOT NULL,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        email VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(50) NOT NULL,
+        cPassword VARCHAR(50) NOT NUll
+    );";
 
     $insertData = "INSERT INTO ".$accTblName." (fullName, username, email, password, cPassword) VALUES ('$fullName', '$username', '$email', '$password', '$cpassword')";
-    //---variables---
+    //-----queries-----
 
-    //-----manage user's registration-----
-    //--create the table--
-    // if($conn->query($createTable)) {
-    //     echo "Table named <u> " .$accTblName. " successfully created!<br>";
-    // }
-    // else {
-    //     echo "Error: " .mysqli_error($conn). "<br>";
-    // }
-    //--create the table--
+    //-----operations-----
+    //---create account tables---
+    if($connObj->exeQuery($createTable)) {
+        echo "Table named <u> " .$accTblName. "</u> successfully created!<br>";
+    }
+    else {
+        echo "Table creation error: " .mysqli_error($connObj->getConn()). "<br>";
+    }
+    //---create account tables---
 
-    //--insert data into the table--
-    // make sure fields are not empty
-    // if 'signup' button was clicked
-    if(!empty($fullName) && !empty($username) && !empty($email) && !empty($password) && !empty($cpassword)) {
-        if(isset($_POST["signup"])) {
-            if($conn->query($insertData)) {
+    //---insert data into the table---
+    if(!empty($fullName) && !empty($username) && !empty($email) && !empty($password) && !empty($cpassword)) { //make sure fields are not empty
+        if(isset($_POST["signup"])) { // if 'signup' button was clicked
+            if($connObj->exeQuery($insertData)) {
                 echo "Data successfully inserted!<br>";
             }
             else {
-                echo "Error: " .mysqli_error($conn). "<br>";
+                echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
             }
         }
     }
     else {
         echo "Fill in all the inputs!<br>";
     }
-    //--insert data into the table--
-    //-----manage user's registration-----
+    //---insert data into the table---
+    //-----operations-----
 
     //close the database connection
-    $conn->close();
-    echo "Connection to <u>" .$dbName. "</u> closed!";
+    $connObj->closeConn();
+
+    //finally, back to index.php
+    header("Location: ../index.php");
 ?>

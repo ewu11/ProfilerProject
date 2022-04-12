@@ -53,9 +53,9 @@
             <!-- <center><p>Hello World!</p></center> -->
             <div id="firstBody">
                 <center>
-                    <h2>Home</h2>
+                    <h2>Profile</h2>
                     <hr id="horiLine1">
-                    <?php require "./processor/manageHomePage.php"; ?>
+                    <?php require "./processor/manageProfilePage.php"; ?>
                 </center>
             </div>
         </div>
