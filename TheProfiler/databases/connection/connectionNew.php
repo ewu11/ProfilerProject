@@ -16,19 +16,27 @@
             $this->conn = new mysqli($this->svName, $this->svUName, $this->svPass);
 
             if($this->conn->connect_error) {
-                echo "Connection to <u>" . $this->svName . "</u> error: ".mysqli_error($this->conn). "<br>";
+                if($_SESSION["onDebug"] === true) {
+                    echo "Connection to <u>" . $this->svName . "</u> error: ".mysqli_error($this->conn). "<br>";
+                }
             }
             else {
-                echo "Connection to <u>" . $this->svName . "</u> succeeded!<br>";
+                if($_SESSION["onDebug"] === true) {
+                    echo "Connection to <u>" . $this->svName . "</u> succeeded!<br>";
+                }
             }
         }
 
         public function closeConn() {
             if($this->conn->close()) {
-                echo "Connection to <u>" .$this->svName. "</u> closed!<br>";
+                if($_SESSION["onDebug"] === true) {
+                    echo "Connection to <u>" .$this->svName. "</u> closed!<br>";
+                }
             }
             else {
-                echo "Close connection error: ".mysqli_error($this->conn). "<br>";
+                if($_SESSION["onDebug"] === true) {
+                    echo "Close connection error: ".mysqli_error($this->conn). "<br>";
+                }
             }
         }
 

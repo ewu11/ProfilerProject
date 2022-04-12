@@ -13,13 +13,15 @@
         require "../databases/connection/connectionNew.php";
     }
     else {
-        echo "<h1>ERROR!</h1>";
+        if($_SESSION["onDebug"] === true) {
+            echo "<h1>ERROR!</h1>";
+        }
     }
     // require __DIR__."databases/connection/connectionNew.php";
     // require_once "/xampp/htdocs/TheProfiler/databases/connection/connectionNew.php";
 
     //-----variables-----
-    $dbName = "profilerDB2";
+    $dbName = "profilerDB";
 
     $accTblName = "account";
     //-----variables-----
@@ -33,21 +35,30 @@
     //-----operations------
     $connObj = new MyConnection();
 
-    echo "Checking for database...<br>";
+    if($_SESSION["onDebug"] === true) {
+        echo "Checking for database...<br>";
+    }
+    
     //if db exists, check if selected, else, create it
     if($connObj->getConn()->select_db($dbName)) {
-        echo "Database named <u>" .$dbName. "</u> already exists!<br>";
+        if($_SESSION["onDebug"] === true) {
+            echo "Database named <u>" .$dbName. "</u> already exists!<br>";
+        }
     }
     else {
         //if database done create, show message
         if($connObj->exeQuery($createDB)) {
-            echo "Database not yet created...<br>";
-            echo "Creating database named <u>" .$dbName. "</u>...<br>";
-            echo "Database named <u>" .$dbName. "</u> successfully created!<br>";
+            if($_SESSION["onDebug"] === true) {
+                echo "Database not yet created...<br>";
+                echo "Creating database named <u>" .$dbName. "</u>...<br>";
+                echo "Database named <u>" .$dbName. "</u> successfully created!<br>";
+            }
         }
         //else show error output
         else {
-            "Database creation error: " .mysqli_error($connObj->getConn()). "<br>";
+            if($_SESSION["onDebug"] === true) {
+                "Database creation error: " .mysqli_error($connObj->getConn()). "<br>";
+            }
         }
     }
 

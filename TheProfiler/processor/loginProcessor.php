@@ -37,9 +37,11 @@
         header("Location: ../homePage.php");
     }
     else {
-        // echo "Error: " .mysqli_error($conn). "<br>";
-        echo "Invalid account details!<br>";
-        echo "<script> window.alert('Invalid account details!'); </script>";
+        if($_SESSION["onDebug"] === true) {
+            // echo "Error: " .mysqli_error($conn). "<br>";
+            echo "Invalid account details!<br>";
+            echo "<script> window.alert('Invalid account details!'); </script>";
+        }
     }
     //----operations----
 

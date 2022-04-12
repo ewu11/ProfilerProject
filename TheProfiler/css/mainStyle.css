@@ -110,3 +110,17 @@ input {
     /* border: 1px solid black; */
     margin-right: 5%;
 }
+
+#nameSpan:hover {
+    cursor: default;
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+
+#earlyLink {
+    text-decoration: none;
+}
+
+#earlyLink:hover {
+    text-decoration: underline;
+}

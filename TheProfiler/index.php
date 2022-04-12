@@ -2,6 +2,9 @@
     // start session
     session_start();
 
+    //for debugging purposes
+    $_SESSION["onDebug"] = false; //edit here to true, to show message
+
     //check for database and tables first, since this is first main page
     //order: index.php calls table.php calls database.php
     // include_once "/xampp/htdocs/testProfile/database/database/table.php";
@@ -16,35 +19,50 @@
     else { //if first time open
         $_SESSION["loggedIn"] = false; //initialize the session variable
     }
+
+    //---debugging purposes---
+    $skipFill = true; //set false for debugging purposes
+    $required = "required"; //by default
+
+    if($skipFill === false) {
+        $required = "";
+    }
+    //---debugging purposes---
 ?>
 
 <!DOCTYPE html>
 <html>
     <header>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript">
+            function preventBack() { window.history.forward(); }
+            setTimeout("preventBack()", 0);
+            window.onunload = function () { null };
+        </script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- set tab icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="./resources/images/smile.ico" />
+        <!-- set tab icon -->
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/images/smile.ico" />
 
-    <!-- page title -->
-    <title>Profiler</title>
+        <!-- page title -->
+        <title>Profiler</title>
 
-    <!-- the default css -->
-    <link rel="stylesheet" href="./css/mainStyle.css">
+        <!-- the default css -->
+        <link rel="stylesheet" href="./css/mainStyle.css">
 
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <div id="headerContainer">
-        <div id="firstHeader">
-            <nav class="navbar">
-                <a class="navbar-brand text-dark" href="#">
-                    <img src="./resources/images/smile.png" width="55" height="55" alt="siteIcon">
-                    Profiler
-                </a>
-            </nav>
+        <div id="headerContainer">
+            <div id="firstHeader">
+                <nav class="navbar">
+                    <a class="navbar-brand text-dark" href="#">
+                        <img src="./resources/images/smile.png" width="55" height="55" alt="siteIcon">
+                        Profiler
+                    </a>
+                </nav>
+            </div>
         </div>
-    </div>
     </header>
 
     <body>
@@ -52,12 +70,12 @@
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
-                <h2>Home</h2>
+                <h2>Login</h2>
                 <hr id="horiLine1">
                 <div class="container">
                     <div class="row bottom-gap">
                         <div class="col-sm">
-                            <p>Are you new? <a href="./registerPage.php">Signup</a></p>
+                            <p>Are you new? <a id="earlyLink" href="./registerPage.php">Register</a></p>
                         </div>
                     </div>
                     <div class="row bottom-gap">
@@ -70,7 +88,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="unameInput">Username</label>
-                                    <input type="text" name="username" id="unameInput" class="form-control" placeholder="Enter username" >
+                                    <input type="text" name="username" id="unameInput" class="form-control" placeholder="Enter username" <?php echo $required; ?>>
                                     <br>
                                 </div>
                             </div>
@@ -79,7 +97,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="passInput">Password</label>
-                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" >
+                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" <?php echo $required; ?>>
                                 </div>
                             </div>
                         </div>
