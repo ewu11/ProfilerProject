@@ -43,7 +43,7 @@ body {
 
 #mainContainer {
     position: fixed;
-    width: 50%;
+    width: 65%;
     left: 0;
     right: 0;
     top: 0;
@@ -57,10 +57,10 @@ body {
 }
 
 #mainContainer #firstBody {
-    position:relative;
+    position: relative;
     width: 70%;
     margin: auto;
-    border: 1px solid black;
+    border: 1px none black;
     background-color: rgb(222, 184, 135);
     padding: 3%;
     height: auto;
@@ -160,6 +160,10 @@ input {
 
     #mainContainer #firstBody {
         height: 80%;
+    }
+
+    #mainContainer {
+        width: 80%;
     }
 } 
 

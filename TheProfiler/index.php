@@ -4,6 +4,7 @@
 
     //for debugging purposes
     $_SESSION["onDebug"] = false; //edit here to true, to show message
+    //for debugging purposes
 
     //check for database and tables first, since this is first main page
     //order: index.php calls table.php calls database.php
@@ -33,12 +34,6 @@
 <!DOCTYPE html>
 <html>
     <header>
-        <script type="text/javascript">
-            function preventBack() { window.history.forward(); }
-            setTimeout("preventBack()", 0);
-            window.onunload = function () { null };
-        </script>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- set tab icon -->
@@ -106,6 +101,18 @@
                 </center>
             </div>
         </div>
+        <?php
+            //---display msg output---
+            if(isset($_SESSION["msg"])) {
+                echo 
+                "<script>
+                    alert('".$_SESSION["msg"]."');
+                </script>
+                ";
+            }
+            unset($_SESSION["msg"]); //->this way, no output when page loaded
+            //---display msg output---
+        ?>
     </body>
 
     <footer>

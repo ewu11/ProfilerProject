@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //TO REGISTER USERS
 
     //-----variables-----
@@ -42,14 +43,20 @@
         if(isset($_POST["signup"])) { // if 'signup' button was clicked
             if($connObj->exeQuery($insertData)) {
                 echo "Data successfully inserted!<br>";
+                $_SESSION["msg"] = "Successfully registered! Please signin.";
+                //if success registration, back to index.php
+                header("Location: ../index.php");
             }
             else {
                 echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
+                $_SESSION["msg"] = "Error registering your account! Account already exists!";
+                header("Location: ../registerPage.php");
             }
         }
     }
     else {
         echo "Fill in all the inputs!<br>";
+        $_SESSION["msg"] = "Fill in all the inputs!";
     }
     //---insert data into the table---
     //-----operations-----
@@ -57,6 +64,5 @@
     //close the database connection
     $connObj->closeConn();
 
-    //finally, back to index.php
-    header("Location: ../index.php");
+    
 ?>
