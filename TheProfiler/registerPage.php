@@ -15,16 +15,8 @@
         <!-- bootstrap css -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-        <div id="headerContainer">
-            <div id="firstHeader">
-                <nav class="navbar">
-                    <a class="navbar-brand text-dark" href="./index.php">
-                        <img src="./resources/images/smile.png" width="55" height="55" alt="siteIcon">
-                        Profiler
-                    </a>
-                </nav>
-            </div>
-        </div>
+        <!-- header -->
+        <?php require "./header.php"; ?>
     </header>
 
     <?php
@@ -115,11 +107,7 @@
     </body>
 
     <footer>
-        <!-- insert here... -->
-        <div id="footerContainer">
-            <div id="firstFooter">
-                <small>©ewu11</small>
-            </div>
-        </div>
+        <!-- footer -->
+        <?php require "./footer.php"; ?>
     </footer>
 </html> 

@@ -20,7 +20,7 @@
         echo 
         "
         <div id='tableContainer' class='table-responsive'>
-            <table class='table table-md table-bordered table-striped'>
+            <table class='table table-md table-bordered table-striped text-center'>
                 <thead>
                     <tr>
                         <th>ID</th>
