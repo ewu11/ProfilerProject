@@ -1,9 +1,22 @@
 <?php
+    // session_start();
     //TO CREATE DATABASE
 
-    //import to access class    
-    require_once "../databases/connection/connectionNew.php";
-    // require("/xampp/htdocs/testProfile/databases/connection/connectionNew.php");
+    //import to access class
+    if($_SESSION["loggedIn"] === true) { //if login button clicked
+        require "./databases/connection/connectionNew.php";
+    }
+    else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"
+        require "../databases/connection/connectionNew.php";
+    }
+    else if(isset($_POST["signup"])) { //if signup button clicked
+        require "../databases/connection/connectionNew.php";
+    }
+    else {
+        echo "<h1>ERROR!</h1>";
+    }
+    // require __DIR__."databases/connection/connectionNew.php";
+    // require_once "/xampp/htdocs/TheProfiler/databases/connection/connectionNew.php";
 
     //-----variables-----
     $dbName = "profilerDB2";

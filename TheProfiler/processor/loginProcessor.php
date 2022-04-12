@@ -7,7 +7,11 @@
     // require "/xampp/htdocs/testProfile/databases/database/database.php";
 
     // require_once "./databases/database/database.php";
-    require_once "../databases/database/database.php";
+
+    //working
+    // require __DIR__."../../databases/database/database.php";
+
+    require "../databases/database/database.php";
 
     //----variables----
     $username = $_POST["username"];

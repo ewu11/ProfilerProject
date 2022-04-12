@@ -52,7 +52,7 @@
             <!-- insert here... -->
             <!-- <center><p>Hello World!</p></center> -->
             <center>
-                <?php require_once "./processor/manageHomePage.php"; ?>
+                <?php require "./processor/manageHomePage.php"; ?>
             </center>
         </div>
 
