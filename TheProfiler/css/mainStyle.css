@@ -64,7 +64,8 @@ body {
     background-color: rgb(222, 184, 135);
     padding: 3%;
     height: fit-content;
-    margin-top: 25%;
+    /* margin-top: 25%; */
+    top: 15%;
 }
 
 #footerContainer {
