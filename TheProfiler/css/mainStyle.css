@@ -186,3 +186,15 @@ input {
     }
 }
 
+#helpText {
+    background-color: #ccc;
+    border: 1px none black;
+    border-radius: 50%;
+    font-size: medium;
+    text-align: center;
+}
+
+#helpText:hover {
+    background-color: #ccc;
+    cursor: help;
+}

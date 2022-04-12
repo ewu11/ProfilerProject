@@ -29,12 +29,27 @@
     //-----queries-----
 
     //-----operations-----
+    if($connObj->getConn()->select_db($dbName)) { //select profiledb as current database
+        if($_SESSION["onDebug"] === true) {
+            echo "Database named <u>" .$dbName. "</u> selected!<br>";
+        }
+        else {
+            if($_SESSION["onDebug"] === true) {
+                echo "Database selection error!<br>";
+            }
+        }
+    }
+
     //---create account tables---
     if($connObj->exeQuery($createTable)) {
-        echo "Table named <u> " .$accTblName. "</u> successfully created!<br>";
+        if($_SESSION["onDebug"] === true) {
+            echo "Table named <u> " .$accTblName. "</u> successfully created!<br>";
+        }
     }
     else {
-        echo "Table creation error: " .mysqli_error($connObj->getConn()). "<br>";
+        if($_SESSION["onDebug"] === true) {
+            echo "Table creation error: " .mysqli_error($connObj->getConn()). "<br>";
+        }
     }
     //---create account tables---
 
@@ -49,7 +64,7 @@
             }
             else {
                 echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
-                $_SESSION["msg"] = "Error registering your account! Account already exists!";
+                $_SESSION["msg"] = "Error registering your account!";
                 header("Location: ../registerPage.php");
             }
         }
