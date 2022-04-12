@@ -83,8 +83,8 @@
                         <div class="row bottom-gap">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label for="passInput">Password</label>
-                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" <?php echo $required; ?>>
+                                    <label for="passInput">Password</label><span id="helpText" data-toggle="tooltip" data-placement="top" title="Double click the password field to show password"> ? </span>
+                                    <input type="password" name="password" id="passInput" class="form-control" placeholder="Enter password" ondblclick="showPass()" <?php echo $required; ?>>
                                 </div>
                             </div>
                         </div>
@@ -113,6 +113,20 @@
             unset($_SESSION["msg"]); //->this way, no output when page loaded
             //---display msg output---
         ?>
+
+        <script>
+        function showPass() {
+                var passInput = document.getElementById("passInput");
+                var cpassInput = document.getElementById("cpassInput");
+                if (passInput.type === "password" || cpassInput === "password") {
+                    passInput.type = "text";
+                    cpassInput.type = "text";
+                } else {
+                    passInput.type = "password";
+                    cpassInput.type = "password";
+                }
+            }
+        </script>
     </body>
 
     <footer>
