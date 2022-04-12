@@ -51,9 +51,11 @@
         <div id="mainContainer">
             <!-- insert here... -->
             <!-- <center><p>Hello World!</p></center> -->
-            <center>
-                <?php require "./processor/manageHomePage.php"; ?>
-            </center>
+            <div id="firstBody">
+                <center>
+                    <?php require "./processor/manageHomePage.php"; ?>
+                </center>
+            </div>
         </div>
 
         <!-- bootstrap javascript bundle -->
