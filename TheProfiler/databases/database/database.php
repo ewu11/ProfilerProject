@@ -1,9 +1,9 @@
 <?php
     // session_start();
     //TO CREATE DATABASE
-
+    
     //import to access class
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if login button clicked
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if user was already logged in, no need go to index.php
         require "./databases/connection/connectionNew.php";
     }
     else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"

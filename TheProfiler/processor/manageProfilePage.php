@@ -7,7 +7,10 @@
     // require __DIR__."./databases/database/database.php";
     // require_once "/xampp/htdocs/TheProfiler/databases/database/database.php";
     
-    require __DIR__."../../databases/database/database.php";
+    // require __DIR__."../../databases/database/database.php";
+
+    require "databases/database/database.php";
+
     //-----variables-----
 
     //-----queries-----
