@@ -3,7 +3,7 @@
     //TO REGISTER USERS
 
     //-----variables-----
-    require "../databases/database/database.php";
+    require "../databases/database/database.php"; //path relative to itself
     // require("/xampp/htdocs/testProfile/databases/database/database.php");
 
     $fullName = $_POST["fullName"];

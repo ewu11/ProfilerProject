@@ -4,15 +4,20 @@
     
     //import to access class
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if user was already logged in, no need go to index.php
+        // echo "test1";
         require "./databases/connection/connectionNew.php";
     }
-    else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"
+    // else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"
+    else if(isset($_POST["signin"])) { //used by "manageHomePage.php" -- signin button clicked
+        // echo "test2";
         require "../databases/connection/connectionNew.php";
     }
     else if(isset($_POST["signup"])) { //if signup button clicked
+        // echo "test3";
         require "../databases/connection/connectionNew.php";
     }
     else {
+        // echo "test4";
         if($_SESSION["onDebug"] === true) {
             echo "<h1>ERROR!</h1>";
         }

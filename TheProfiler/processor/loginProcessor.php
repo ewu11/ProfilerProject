@@ -11,7 +11,7 @@
     //working
     // require __DIR__."../../databases/database/database.php";
 
-    require "../databases/database/database.php";
+    require "../databases/database/database.php"; //path relative to itself
 
     //----variables----
     $username = $_POST["username"];

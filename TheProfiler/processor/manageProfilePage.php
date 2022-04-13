@@ -9,12 +9,13 @@
     
     // require __DIR__."../../databases/database/database.php";
 
-    require "databases/database/database.php";
+    require "databases/database/database.php"; //path relative to profilePage.php
 
     //-----variables-----
 
     //-----queries-----
     $getUserQuery = "SELECT id, fullName, username, email, password, cPassword FROM " .$accTblName. " WHERE username ='" .$_SESSION["s_username"]. "' AND password = '" .$_SESSION["s_password"]. "'";
+    // $testGetUserQuery = "SELECT id, fullName, username, email, password, cPassword FROM " .$accTblName;
     $getUser = $connObj->exeQuery($getUserQuery);
     //-----queries-----
 

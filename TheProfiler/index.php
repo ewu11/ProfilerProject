@@ -18,7 +18,7 @@
         exit; //not sure what this does, but can test by commenting out
     }
     else { //if first time open
-        $_SESSION["loggedIn"] = false; //initialize the session variable
+        $_SESSION["loggedIn"]; //initialize the session variable
     }
 
     //---debugging purposes---
