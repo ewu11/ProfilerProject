@@ -59,4 +59,17 @@
             }
         }
     }
+
+    //--finally, select the database for processing--
+    if($connObj->getConn()->select_db($dbName)) { //select profiledb as current database
+        if($_SESSION["onDebug"] === true) {
+            echo "Database named <u>" .$dbName. "</u> selected!<br>";
+        }
+        else {
+            if($_SESSION["onDebug"] === true) {
+                echo "Database selection error!<br>";
+            }
+        }
+    }
+    //--finally, select the database for processing--
 ?>

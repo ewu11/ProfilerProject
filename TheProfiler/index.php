@@ -2,7 +2,7 @@
     session_start();
 
     //for debugging purposes
-    $_SESSION["onDebug"] = false; //edit here to true, to show message
+    $_SESSION["onDebug"] = false; //edit to 'true', to show message -- !---NOT VISIBLE, UNLESS COMMENT OUT ALL THE HEADER CODES---!
     //for debugging purposes
 
     //if user was is logged in, redirect to homepage
