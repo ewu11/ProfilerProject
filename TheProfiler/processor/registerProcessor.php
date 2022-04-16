@@ -1,7 +1,12 @@
 <?php
     session_start();
 
-    require "../databases/database/database.php"; //path relative to itself
+    if(isset($_POST["signup"])) {
+        require "../databases/database/database.php"; //if signup button was pressed
+    }
+    else {
+        require "./databases/database/database.php"; //path relative to itself
+    }
 
     //TO REGISTER USERS
 
@@ -27,17 +32,6 @@
     //-----queries-----
 
     //-----operations-----
-    // if($connObj->getConn()->select_db($dbName)) { //select profiledb as current database
-    //     if($_SESSION["onDebug"] === true) {
-    //         echo "Database named <u>" .$dbName. "</u> selected!<br>";
-    //     }
-    //     else {
-    //         if($_SESSION["onDebug"] === true) {
-    //             echo "Database selection error!<br>";
-    //         }
-    //     }
-    // }
-
     //---create account tables---
     if($connObj->exeQuery($createTable)) {
         if($_SESSION["onDebug"] === true) {
@@ -65,18 +59,21 @@
                 echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
                 $_SESSION["msg"] = "Error registering your account!";
                 $connObj->closeConn();
-                header("Location: ../registerPage.php");
+                header("Location: ../index.php");header("Location: ../index.php");
             }
         }
     }
     else {
-        echo "Fill in all the inputs!<br>";
+        if($_SESSION["onDebug"] === true) {
+            echo "Fill in all the inputs!<br>";
+        }
         $_SESSION["msg"] = "Fill in all the inputs!";
+        header("Location: ../registerPage.php");
         $connObj->closeConn();
     }
     //---insert data into the table---
     //-----operations-----
 
     //close the database connection
-    $connObj->closeConn();    
+    //$connObj->closeConn();    
 ?>

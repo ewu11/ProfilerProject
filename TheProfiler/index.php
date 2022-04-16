@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <input type="submit" name="signin" value="Login" class="btn btn-primary"></button>
+                                    <input type="submit" name="signin" value="Login" onclick="return checkPass()" class="btn btn-primary"></button>
                                 </div>
                             </div>
                         </div>
@@ -108,16 +108,23 @@
 
         <script>
         function showPass() {
-                var passInput = document.getElementById("passInput");
-                var cpassInput = document.getElementById("cpassInput");
-                if (passInput.type === "password" || cpassInput === "password") {
-                    passInput.type = "text";
-                    cpassInput.type = "text";
-                } else {
-                    passInput.type = "password";
-                    cpassInput.type = "password";
-                }
+            var passInput = document.getElementById("passInput");
+            if (passInput.type === "password") {
+                passInput.type = "text";
+            } else {
+                passInput.type = "password";
             }
+        }
+
+        function checkPass() {
+            var uNInput = document.getElementById("unameInput").value;
+            var pInput = document.getElementById("passInput");
+
+            if(uNInput=="" || pInput=="") {
+                alert("Fill in all the inputs!");
+                return false;
+            }
+        }
         </script>
     </body>
 

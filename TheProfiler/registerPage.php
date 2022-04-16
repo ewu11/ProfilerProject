@@ -57,7 +57,7 @@
                             or
                         </div>
                     </div>
-                    <form id="boxGroup" method="POST" onSubmit="return checkPass()" action="./processor/registerProcessor.php">
+                    <form id="boxGroup" method="POST" action="./processor/registerProcessor.php"> 
                         <div class="row bottom-gap">
                             <div class="col-sm">
                                 <div class="form-group">
@@ -104,7 +104,7 @@
                                 <div class="form-group">
                                     <!-- name attribute is needed for 'registerProcessor.php' -->
                                     <!-- 'button' tag not working for submitting form, use 'input' instead -->
-                                    <input type="submit" name="signup" value="Signup" class="btn btn-primary">
+                                    <input type="submit" name="signup" value="Signup" onclick="return checkPass()" class="btn btn-primary">
                                 </div>
                             </div>
                         </div>
@@ -128,12 +128,21 @@
         <script>
             // manage passwords
             function checkPass() {
-                var passA = document.getElementById("passInput").value;
-                var passB = document.getElementById("cpassInput").value;
+                var fNInput = document.getElementById("fnameInput").value;
+                var uNInput = document.getElementById("unameInput").value;
+                var emInput = document.getElementById("emailInput").value;
+                var pInput = document.getElementById("passInput").value;
+                var cpInput = document.getElementById("cpassInput").value;
 
-                if(passA != passB) {
-                    alert("Passwords do not match! Please re-enter password!");
+                if(fNInput=="" || uNInput=="" || emInput=="" || pInput=="" || cpInput=="") {
+                    alert("Fill in all the inputs!");
                     return false;
+                }
+                else { //if all inputs filled, check for password matching
+                    if(pInput != cpInput) {
+                        alert("Passwords do not match! Please re-enter password!");
+                        return false;
+                    }
                 }
             }
 
