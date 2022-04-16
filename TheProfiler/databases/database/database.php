@@ -1,34 +1,27 @@
 <?php
-    // session_start();
     //TO CREATE DATABASE
     
-    //import to access class
+    //--import to access class--
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if user was already logged in, no need go to index.php
-        // echo "test1";
         require "./databases/connection/connectionNew.php";
     }
-    // else if($_SESSION["loggedIn"] === false) { //used by "manageHomePage.php"
     else if(isset($_POST["signin"])) { //used by "manageHomePage.php" -- signin button clicked
-        // echo "test2";
         require "../databases/connection/connectionNew.php";
     }
     else if(isset($_POST["signup"])) { //if signup button clicked
-        // echo "test3";
-        require "../databases/connection/connectionNew.php";
+        require "../databases/connection/connectionNew.php"; //used by registorProcessor
     }
     else {
-        // echo "test4";
         if($_SESSION["onDebug"] === true) {
             echo "<h1>ERROR!</h1>";
         }
     }
-    // require __DIR__."databases/connection/connectionNew.php";
-    // require_once "/xampp/htdocs/TheProfiler/databases/connection/connectionNew.php";
+    //--import to access class--
 
     //-----variables-----
-    $dbName = "profilerDB";
+    $dbName = "profilerDB"; //used globally
 
-    $accTblName = "account";
+    $accTblName = "account"; //used globally
     //-----variables-----
     
     //-----queries-----
@@ -66,13 +59,4 @@
             }
         }
     }
-
-    //lastly use the created db
-    // if($connObj->exeQuery($useDB)) {
-    //     echo "Database named <u>" .$dbName. "</u> selected!<br>";
-    // }
-    // else {
-    //     "Database selection error: " .mysqli_error($conn). "<br>";
-    // }
-    //-----operations-----
 ?>

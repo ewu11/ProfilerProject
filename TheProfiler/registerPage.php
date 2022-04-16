@@ -31,17 +31,16 @@
 
     <?php
         //---debugging purposes---
-        $skipFill = false; //set false for debugging purposes
+        $skipFill = true; //set 'true' for debugging purposes
         $required = "required"; //by default
 
-        if($skipFill === false) {
+        if($skipFill === true) {
             $required = "";
         }
         //---debugging purposes---
     ?>
 
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
@@ -104,7 +103,7 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <!-- name attribute is needed for 'registerProcessor.php' -->
-                                    <!-- button tag not working for submitting form, use input instead -->
+                                    <!-- 'button' tag not working for submitting form, use 'input' instead -->
                                     <input type="submit" name="signup" value="Signup" class="btn btn-primary">
                                 </div>
                             </div>
@@ -127,18 +126,13 @@
             //---display msg output---
         ?>
         <script>
-            //enable tooltips
-            // $(document).ready(function(){
-            //     $('[data-bs-toggle="tooltip"]').tooltip();   
-            // });
-
             // manage passwords
             function checkPass() {
                 var passA = document.getElementById("passInput").value;
                 var passB = document.getElementById("cpassInput").value;
 
                 if(passA != passB) {
-                    alert("Password is wrong. Please re-enter password!");
+                    alert("Passwords do not match! Please re-enter password!");
                     return false;
                 }
             }
@@ -155,11 +149,9 @@
                 }
             }
         </script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html> 

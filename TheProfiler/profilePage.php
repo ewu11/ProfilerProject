@@ -23,10 +23,7 @@
         <?php require "./header.php"; ?>
     </header>
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
-            <!-- insert here... -->
-            <!-- <center><p>Hello World!</p></center> -->
             <div id="firstBody">
                 <center>
                     <h2>Profile</h2>
@@ -35,13 +32,9 @@
                 </center>
             </div>
         </div>
-
-        <!-- bootstrap javascript bundle -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html>

@@ -1,31 +1,24 @@
 <?php
-    // start session
     session_start();
 
     //for debugging purposes
     $_SESSION["onDebug"] = false; //edit here to true, to show message
     //for debugging purposes
 
-    //check for database and tables first, since this is first main page
-    //order: index.php calls table.php calls database.php
-    // include_once "/xampp/htdocs/testProfile/database/database/table.php";
-
-    // if(isset($_POST["signin"]) && $_SESSION["loggedIn"] === true) {
-
     //if user was is logged in, redirect to homepage
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
         header("Location: homePage.php");
         exit; //not sure what this does, but can test by commenting out
     }
-    else { //if first time open
-        $_SESSION["loggedIn"]; //initialize the session variable
+    else { //if first time on the page
+        $_SESSION["loggedIn"] = null; //initialize the session variable
     }
 
     //---debugging purposes---
-    $skipFill = true; //set false for debugging purposes
+    $skipFill = true; //set 'true' for debugging purposes
     $required = "required"; //by default
 
-    if($skipFill === false) {
+    if($skipFill === true) {
         $required = "";
     }
     //---debugging purposes---
@@ -53,7 +46,6 @@
     </header>
 
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
@@ -130,7 +122,6 @@
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html> 
