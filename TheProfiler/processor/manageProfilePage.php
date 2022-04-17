@@ -1,17 +1,11 @@
 <?php
     //TO MANAGE THE HOMEPAGE
 
-    // session_start();
-
-    //-----variables-----
-    // require __DIR__."./databases/database/database.php";
-    // require_once "/xampp/htdocs/TheProfiler/databases/database/database.php";
-    
-    require __DIR__."../../databases/database/database.php";
-    //-----variables-----
+    require "./databases/database/database.php"; //path relative to profilePage.php
 
     //-----queries-----
     $getUserQuery = "SELECT id, fullName, username, email, password, cPassword FROM " .$accTblName. " WHERE username ='" .$_SESSION["s_username"]. "' AND password = '" .$_SESSION["s_password"]. "'";
+    // $testGetUserQuery = "SELECT id, fullName, username, email, password, cPassword FROM " .$accTblName;
     $getUser = $connObj->exeQuery($getUserQuery);
     //-----queries-----
 
@@ -43,8 +37,6 @@
                     <td>".$row["password"]."</td>
                 </tr>
             ";
-
-            // echo "<p>Full Name: ". $row["fullName"]. " - Username: " . $row["username"]. " - Email: " .$row["email"]. " - Password: " . $row["password"]. "</p><br>";
         }
         echo 
         "
@@ -52,10 +44,11 @@
             </table>
         </div>
         ";
-
     }
     else {
         echo "Error: " .mysqli_error($connObj->getConn()). "<br>";
     }
     //-----operations-----
+
+    $connObj->closeConn();
 ?>

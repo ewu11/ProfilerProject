@@ -1,31 +1,24 @@
 <?php
-    // start session
     session_start();
 
     //for debugging purposes
-    $_SESSION["onDebug"] = false; //edit here to true, to show message
+    $_SESSION["onDebug"] = false; //edit to 'true', to show message -- !---NOT VISIBLE, UNLESS COMMENT OUT ALL THE HEADER CODES---!
     //for debugging purposes
-
-    //check for database and tables first, since this is first main page
-    //order: index.php calls table.php calls database.php
-    // include_once "/xampp/htdocs/testProfile/database/database/table.php";
-
-    // if(isset($_POST["signin"]) && $_SESSION["loggedIn"] === true) {
 
     //if user was is logged in, redirect to homepage
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) {
         header("Location: homePage.php");
         exit; //not sure what this does, but can test by commenting out
     }
-    else { //if first time open
-        $_SESSION["loggedIn"] = false; //initialize the session variable
+    else { //if first time on the page
+        $_SESSION["loggedIn"] = null; //initialize the session variable
     }
 
     //---debugging purposes---
-    $skipFill = true; //set false for debugging purposes
+    $skipFill = true; //set 'true' for debugging purposes
     $required = "required"; //by default
 
-    if($skipFill === false) {
+    if($skipFill === true) {
         $required = "";
     }
     //---debugging purposes---
@@ -53,7 +46,6 @@
     </header>
 
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
@@ -92,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <input type="submit" name="signin" value="Login" class="btn btn-primary"></button>
+                                    <input type="submit" name="signin" value="Login" onclick="return checkPass()" class="btn btn-primary"></button>
                                 </div>
                             </div>
                         </div>
@@ -116,21 +108,27 @@
 
         <script>
         function showPass() {
-                var passInput = document.getElementById("passInput");
-                var cpassInput = document.getElementById("cpassInput");
-                if (passInput.type === "password" || cpassInput === "password") {
-                    passInput.type = "text";
-                    cpassInput.type = "text";
-                } else {
-                    passInput.type = "password";
-                    cpassInput.type = "password";
-                }
+            var passInput = document.getElementById("passInput");
+            if (passInput.type === "password") {
+                passInput.type = "text";
+            } else {
+                passInput.type = "password";
             }
+        }
+
+        function checkPass() {
+            var uNInput = document.getElementById("unameInput").value;
+            var pInput = document.getElementById("passInput");
+
+            if(uNInput=="" || pInput=="") {
+                alert("Fill in all the inputs!");
+                return false;
+            }
+        }
         </script>
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html> 
