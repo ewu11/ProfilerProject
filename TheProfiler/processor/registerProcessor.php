@@ -1,12 +1,7 @@
 <?php
     session_start();
-
-    if(isset($_POST["signup"])) {
-        require "../databases/database/database.php"; //if signup button was pressed
-    }
-    else {
-        require "./databases/database/database.php"; //path relative to itself
-    }
+    
+    require "../databases/database/database.php"; //path relative to itself
 
     //TO REGISTER USERS
 
@@ -59,7 +54,7 @@
                 echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
                 $_SESSION["msg"] = "Error registering your account!";
                 $connObj->closeConn();
-                header("Location: ../index.php");header("Location: ../index.php");
+                header("Location: ../index.php");
             }
         }
     }
@@ -73,7 +68,4 @@
     }
     //---insert data into the table---
     //-----operations-----
-
-    //close the database connection
-    //$connObj->closeConn();    
 ?>

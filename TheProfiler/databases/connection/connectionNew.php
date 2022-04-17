@@ -6,6 +6,7 @@
         private $svName = "localhost";
         private $svUName = "root";
         private $svPass = "";
+        private $dbName = "profilerDB"; //globally used
 
         private $conn;
         //----variables----
