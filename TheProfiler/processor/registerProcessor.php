@@ -1,18 +1,16 @@
 <?php
     session_start();
+    
+    require "../databases/database/database.php"; //path relative to itself
+
     //TO REGISTER USERS
 
     //-----variables-----
-    require "../databases/database/database.php"; //path relative to itself
-    // require("/xampp/htdocs/testProfile/databases/database/database.php");
-
     $fullName = $_POST["fullName"];
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
-
-    // $accTblName = "account";
     //-----variables-----
 
     //-----queries-----   
@@ -29,17 +27,6 @@
     //-----queries-----
 
     //-----operations-----
-    if($connObj->getConn()->select_db($dbName)) { //select profiledb as current database
-        if($_SESSION["onDebug"] === true) {
-            echo "Database named <u>" .$dbName. "</u> selected!<br>";
-        }
-        else {
-            if($_SESSION["onDebug"] === true) {
-                echo "Database selection error!<br>";
-            }
-        }
-    }
-
     //---create account tables---
     if($connObj->exeQuery($createTable)) {
         if($_SESSION["onDebug"] === true) {
@@ -58,26 +45,27 @@
         if(isset($_POST["signup"])) { // if 'signup' button was clicked
             if($connObj->exeQuery($insertData)) {
                 echo "Data successfully inserted!<br>";
-                $_SESSION["msg"] = "Successfully registered! Please signin.";
+                $_SESSION["msg"] = "Successfully registered! Please sign in!";
                 //if success registration, back to index.php
+                $connObj->closeConn();
                 header("Location: ../index.php");
             }
             else {
                 echo "Table insertion error: " .mysqli_error($connObj->getConn()). "<br>";
                 $_SESSION["msg"] = "Error registering your account!";
-                header("Location: ../registerPage.php");
+                $connObj->closeConn();
+                header("Location: ../index.php");
             }
         }
     }
     else {
-        echo "Fill in all the inputs!<br>";
+        if($_SESSION["onDebug"] === true) {
+            echo "Fill in all the inputs!<br>";
+        }
         $_SESSION["msg"] = "Fill in all the inputs!";
+        header("Location: ../registerPage.php");
+        $connObj->closeConn();
     }
     //---insert data into the table---
     //-----operations-----
-
-    //close the database connection
-    $connObj->closeConn();
-
-    
 ?>

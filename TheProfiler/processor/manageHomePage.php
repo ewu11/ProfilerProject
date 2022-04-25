@@ -1,14 +1,7 @@
 <?php
     //TO MANAGE THE HOMEPAGE
 
-    // session_start();
-
-    //-----variables-----
-    // require __DIR__."./databases/database/database.php";
-    // require_once "/xampp/htdocs/TheProfiler/databases/database/database.php";
-    
-    // require __DIR__."../../databases/database/database.php";
-    require "databases/database/database.php"; //path relative to homePage.php
+    require "./databases/database/database.php"; //path relative to homePage.php
     //-----variables-----
 
     //-----queries-----
@@ -29,4 +22,6 @@
         echo "Error: " .mysqli_error($connObj->getConn()). "<br>";
     }
     //-----operations-----
+
+    $connObj->closeConn();
 ?>

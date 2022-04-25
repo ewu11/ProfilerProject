@@ -20,15 +20,10 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <!-- header -->
-        <!-- cdn js is here so that the nav button works -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  -->
         <?php require "./header.php"; ?>
     </header>
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
-            <!-- insert here... -->
-            <!-- <center><p>Hello World!</p></center> -->
             <div id="firstBody">
                 <center>
                     <h2>Home</h2>
@@ -38,8 +33,6 @@
             </div>
         </div>
 
-        <!-- bootstrap javascript bundle -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
         <?php
             //---display msg output---
             if(isset($_SESSION["msg"])) {
@@ -55,7 +48,6 @@
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html>

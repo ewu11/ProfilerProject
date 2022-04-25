@@ -163,13 +163,47 @@ input {
     }
 
     #mainContainer #firstBody {
-        height: 80%;
+        height: 75%;
     }
 
     #mainContainer {
         width: 80%;
     }
-} 
+}
+
+.btn.btnCollapse {
+    background-color:darkslategray;
+    color: white;
+}
+
+#collapseContent.delAccDiv, #collapseContent.chgeUnDiv, #collapseContent.chgePassDiv {
+    /* border: 1px solid red;
+    background-color: aquamarine; */
+    border: 1px solid blanchedalmond;
+    padding: 3%;
+}
+
+.updtContainer {
+    padding: 3%;
+    border: 1px solid blanchedalmond;
+    margin-bottom: 5%;
+}
+
+.updtContainer .btn {
+    display: block;
+}
+
+.updtContainer label {
+    margin-bottom: 2%
+}
+
+#updtSelId {
+    margin-bottom: 6%;
+}
+
+.submitDiv {
+    margin-top: 5%;
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {

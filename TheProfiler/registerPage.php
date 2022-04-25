@@ -31,17 +31,16 @@
 
     <?php
         //---debugging purposes---
-        $skipFill = false; //set false for debugging purposes
+        $skipFill = true; //set 'true' for debugging purposes
         $required = "required"; //by default
 
-        if($skipFill === false) {
+        if($skipFill === true) {
             $required = "";
         }
         //---debugging purposes---
     ?>
 
     <body>
-        <!-- insert here -->
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
@@ -58,7 +57,7 @@
                             or
                         </div>
                     </div>
-                    <form id="boxGroup" method="POST" onSubmit="return checkPass()" action="./processor/registerProcessor.php">
+                    <form id="boxGroup" method="POST" action="./processor/registerProcessor.php"> 
                         <div class="row bottom-gap">
                             <div class="col-sm">
                                 <div class="form-group">
@@ -104,8 +103,8 @@
                             <div class="col-sm">
                                 <div class="form-group">
                                     <!-- name attribute is needed for 'registerProcessor.php' -->
-                                    <!-- button tag not working for submitting form, use input instead -->
-                                    <input type="submit" name="signup" value="Signup" class="btn btn-primary">
+                                    <!-- 'button' tag not working for submitting form, use 'input' instead -->
+                                    <input type="submit" name="signup" value="Signup" onclick="return checkPass()" class="btn btn-primary">
                                 </div>
                             </div>
                         </div>
@@ -127,19 +126,23 @@
             //---display msg output---
         ?>
         <script>
-            //enable tooltips
-            // $(document).ready(function(){
-            //     $('[data-bs-toggle="tooltip"]').tooltip();   
-            // });
-
             // manage passwords
             function checkPass() {
-                var passA = document.getElementById("passInput").value;
-                var passB = document.getElementById("cpassInput").value;
+                var fNInput = document.getElementById("fnameInput").value;
+                var uNInput = document.getElementById("unameInput").value;
+                var emInput = document.getElementById("emailInput").value;
+                var pInput = document.getElementById("passInput").value;
+                var cpInput = document.getElementById("cpassInput").value;
 
-                if(passA != passB) {
-                    alert("Password is wrong. Please re-enter password!");
+                if(fNInput=="" || uNInput=="" || emInput=="" || pInput=="" || cpInput=="") {
+                    alert("Fill in all the inputs!");
                     return false;
+                }
+                else { //if all inputs filled, check for password matching
+                    if(pInput != cpInput) {
+                        alert("Passwords do not match! Please re-enter password!");
+                        return false;
+                    }
                 }
             }
 
@@ -155,11 +158,9 @@
                 }
             }
         </script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
     </body>
 
     <footer>
-        <!-- footer -->
         <?php require "./footer.php"; ?>
     </footer>
 </html> 
