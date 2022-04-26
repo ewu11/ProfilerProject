@@ -34,11 +34,10 @@
         <?php require "./header.php"; ?>
     </header>
     <body onload="disableBtn()">
-
+      
     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Button with data-bs-target
     </button>
-
         <div id="mainContainer">
             <div id="firstBody">
                 <center>
