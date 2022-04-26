@@ -22,6 +22,17 @@
         $required = "";
     }
     //---debugging purposes---
+
+    //---display msg output---
+    if(isset($_SESSION["msg"])) {
+        echo 
+        "<script>
+            alert('".$_SESSION["msg"]."');
+        </script>
+        ";
+    }
+    unset($_SESSION["msg"]); //->this way, no output when page loaded
+    //---display msg output---
 ?>
 
 <!DOCTYPE html>
@@ -93,19 +104,6 @@
                 </center>
             </div>
         </div>
-        <?php
-            //---display msg output---
-            if(isset($_SESSION["msg"])) {
-                echo 
-                "<script>
-                    alert('".$_SESSION["msg"]."');
-                </script>
-                ";
-            }
-            unset($_SESSION["msg"]); //->this way, no output when page loaded
-            //---display msg output---
-        ?>
-
         <script>
         function showPass() {
             var passInput = document.getElementById("passInput");
