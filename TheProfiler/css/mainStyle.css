@@ -186,7 +186,7 @@ input {
 .updtContainer {
     padding: 3%;
     border: 1px solid blanchedalmond;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
 }
 
 .updtContainer .btn {
@@ -202,7 +202,7 @@ input {
 }
 
 .submitDiv {
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

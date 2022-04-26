@@ -1,5 +1,16 @@
 <?php
     session_start();
+
+    //---display msg output---
+    if(isset($_SESSION["msg"])) {
+        echo 
+        "<script>
+            alert('".$_SESSION["msg"]."');
+        </script>
+        ";
+    }
+    unset($_SESSION["msg"]); //->this way, no output when page loaded
+    //---display msg output---
 ?>
 
 <!DOCTYPE html>
@@ -50,19 +61,31 @@
                         <button type="button" id="collapseBtn" class="btn btnCollapse" data-bs-toggle="collapse" data-bs-target="#collapseDiv" aria-expanded="false" aria-controls="collapseDiv" onclick="return continueBtn()">Continue</button> <!--data bs toggle and target are needed to work properly-->
                     </div>
                     <!-- ---advanced way--- -->
-                    <form action="./processor/updateProfileProcessor.php" method="POST">
+                    <form action="./processor/updaterProcessor.php" onsubmit="return verifyInput();" method="POST">
                         <div class="collapse" id="collapseDiv"> <!--class collapse is needed so that div is hidden onload-->
                             <div id="collapseContent" class="delAccDiv">
-                                delete account div
+                                <div class="form-group">
+                                    <label for="deleteAccInput">Confirm deletion?</label>
+                                    <input type="text" id="deleteAccInput" class="form-control" name="delAcc" placeholder="Type 'Confirm' to proceed.">
+                                </div>
                             </div>
                             <div id="collapseContent" class="chgeUnDiv">
-                                change username div
+                                <div class="form-group">
+                                    <label for="chgeUnInput">What is your new username?</label>
+                                    <input type="text" id="chgeUnInput" class="form-control" name="uname" placeholder="Enter new username">
+                                </div>
                             </div>
                             <div id="collapseContent" class="chgePassDiv">
-                                change password div
+                                <div class="form-group">
+                                    <label for="passInput">What is your new password?</label>
+                                    <input type="password" id="passInput" class="form-control" name="pwd" placeholder="Enter new password" ondblclick="showPass()">
+                                    <br>
+                                    <label for="cPassInput">Please re-enter your new password</label>
+                                    <input type="password" id="cPassInput" class="form-control" name="cPwd" placeholder="Re-enter new password" ondblclick="showPass()">
+                                </div>
                             </div>
                             <div id="collapseContent" class="submitDiv">
-                                <input type="submit" class="btn btnCollapse" id="sbmtBtn" value="Submit">
+                                <input type="submit" class="btn btnCollapse" id="sbmtBtnId" name="sbmtBtn" value="Submit">
                             </div>
                         </div>
                     </form>
@@ -145,12 +168,93 @@
             function disableBtn() {
                 var selectedOpt = document.getElementById("updtSelId").value;
                 var collapseBtn = document.getElementById("collapseBtn");
-                
+
+                //disable the button when value == ""
                 if(selectedOpt == "") {
                     collapseBtn.disabled = true;
                 }
                 else {
                     collapseBtn.disabled = false;
+                }
+
+                //-----PLAN TO TO FIX LAST-----
+                //if attr is collapse, change to "", else, change to collapse
+                // if(collapseBtn.getAttribute("data-bs-toggle") == "collapse") {
+                //     alert("heyy!");
+                // }
+                //-----PLAN TO TO FIX LAST-----
+            }
+
+            function showPass() {
+                var passInput = document.getElementById("passInput");
+                var cPassInput = document.getElementById("cPassInput");
+                if (passInput.type === "password" || cPassInput.type === "password") {
+                    passInput.type = "text";
+                    cPassInput.type = "text";
+                } else {
+                    passInput.type = "password";
+                    cPassInput.type = "password";
+                }
+            }
+
+            function verifyInput() {
+                var selectedOpt = document.getElementById("updtSelId").value;
+                var passInput = document.getElementById("passInput").value;
+                var cPassInput = document.getElementById("cPassInput").value;
+                var delAccInput = document.getElementById("deleteAccInput").value;
+                var usernameInput = document.getElementById("chgeUnInput").value;
+
+                // first, check which option was selected
+                if(selectedOpt == "delAcc") {
+                    //check if empty first, then if confirm was properly typed, proceed
+                    if(delAccInput != "") {
+                        if(delAccInput != "Confirm") {
+                            alert("Please type correctly!");
+                            return false;
+                        }
+                        else {
+                            var deleteDialog = window.confirm("Are you sure to proceed? This action is irreversible!");
+                            if(deleteDialog == false) {
+                                return false;
+                            }
+                        }
+                    }
+                    else {
+                        alert("Please fill in all inputs!");
+                        return false;
+                    }
+                }
+                else if(selectedOpt == "chgeUn") {
+                    //cannot be empty
+                    if(usernameInput == "") {
+                        alert("Please insert your desired new username!");
+                        return false;
+                    }
+                    else {
+                        var uNameChgeDlg = window.confirm("Confirm changing your username?");
+                        if(uNameChgeDlg == false) {
+                            return false;
+                        }
+                    }
+                }
+                else if(selectedOpt == "chgePass") {
+                    //if not empty, check for matching
+                    if(passInput != "" && cPassInput != "") {
+                        if(passInput != cPassInput) {
+                            alert("Passwords not matching! Please try again!");
+                            return false;
+                        }
+                        else {
+                            var passDlg = window.confirm("Confirm changing password?");
+                            if(passDlg == false) {
+                                return false;
+                            }
+                        }
+                    }
+                    else {
+                        alert("Please fill in all inputs!");
+                        return false;
+                    }
                 }
             }
         </script>

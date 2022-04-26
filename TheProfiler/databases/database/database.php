@@ -3,8 +3,13 @@
     
     //--import to access class--
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true) { //if user was already logged in, no need go to index.php
-        // echo "<script> alert('test1'); </script>";
-        require "./databases/connection/connectionNew.php";
+        if(isset($_POST["sbmtBtn"])) { //relative to "updateProfileProcessor.php"
+            require "../databases/connection/connectionNew.php";
+        }
+        else {
+            // echo "<script> alert('test1'); </script>";
+            require "./databases/connection/connectionNew.php";
+        }
     }
     else if(isset($_POST["signin"])) { //used by "manageHomePage.php" -- signin button clicked
         // echo "<script> alert('test2'); </script>";
